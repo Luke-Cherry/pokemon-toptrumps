@@ -22,14 +22,14 @@
           src="./assets/logo.svg"
           alt="Pokemon Logo"
           width="auto"
-          height="30"
+          height="30px"
           class="d-inline-block align-top"
         />
         Pokemon Top Trumps
       </a>
 
       <!-- Scoring information on the right -->
-      <div class="navbar-text ms-auto fs-5">
+      <div id="scoringDiv" class="navbar-text ms-auto fs-5">
         <span>Total Cards: 52</span>
         <span class="mx-2">You: 20</span>
         <span>Computer: 18</span>
@@ -271,10 +271,19 @@
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/451.png"
             class="card-img-top"
           />
+          
+          <ul class="list-group list-group-horizontal">
+            <a href="#" class="list-group-item list-group-item-action p-2">
+                <span>Height: <span id="weightValue" class="badge bg-secondary">x</span></span>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action p-2">
+                <span>Weight: <span id="weightValue" class="badge bg-secondary">x</span></span>
+            </a>
+          </ul>
 
           <!--Attack Stat-->
           <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="#" class="list-group-item list-group-item-action p-2">
               <div class="d-flex justify-content-between align-items-center">
                 <span class="me-2">Attack</span>
                 <div class="d-flex align-items-center">
@@ -284,19 +293,17 @@
                     height="20"
                     class="flex-shrink-0 me-2"
                   />
-                  <span class="badge bg-secondary text-white fs-6 me-2"
+                  <span id="playerAttack" class="badge bg-secondary text-white fs-6 me-2"
                     >50</span
                   >
                 </div>
               </div>
               <div class="progress mt-2">
                 <div
+                  id="playerAttackProgress"
                   class="progress-bar bg-success"
                   role="progressbar"
-                  style="width: 50%; --bs-progress-height: 0.2rem"
-                  aria-valuenow="25"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
+                  style="width: 50%;"
                 ></div>
               </div>
             </a>
