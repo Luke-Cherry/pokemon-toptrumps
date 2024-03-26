@@ -1,3 +1,10 @@
 .progress {
     height: 0.2rem;
 }
+.list-group {
+    border-radius: 0;
+}
+
+.card .list-group {
+    border: 0;
+}

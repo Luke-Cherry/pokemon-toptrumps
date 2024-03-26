@@ -98,10 +98,11 @@ const getPokemon = async (id) => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await response.json();
+    const imageUrl = data.sprites.other.dream_world.front_default || data.sprites.front_default;
     const object = {
       id: id,
       name: data.name.toUpperCase(),
-      imageUrl: data.sprites.front_default,
+      imageUrl: imageUrl,
       stats: {
         weight: data.weight,
         height: data.height,
