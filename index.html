@@ -14,30 +14,31 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <!-- Logo on the left -->
-      <a class="navbar-brand" href="#">
-        <img
-          src="./assets/logo.svg"
-          alt="Pokemon Logo"
-          width="auto"
-          height="30px"
-          class="d-inline-block align-top"
-        />
-        Pokemon Top Trumps
-      </a>
-
-      <!-- Scoring information on the right -->
-      <div id="scoringDiv" class="navbar-text ms-auto fs-5">
-        <span>Total Cards: 52</span>
-        <span class="mx-2">You: 20</span>
-        <span>Computer: 18</span>
-      </div>
-    </div>
-  </nav>
-
   <body>
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <!-- Logo on the left -->
+        <a class="navbar-brand" href="javascript:void(0);">
+          <img
+            src="./assets/logo.svg"
+            alt="Pokemon Logo"
+            width="auto"
+            height="30px"
+            class="d-inline-block align-top"
+          />
+          Pokemon Top Trumps
+        </a>
+
+        <!-- Scoring information on the right -->
+        <div id="scoringDiv" class="navbar-text ms-auto fs-5">
+          <span>Total Cards: 52</span>
+          <span class="mx-2">You: 20</span>
+          <span>Computer: 18</span>
+        </div>
+      </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero text-center">
       <div class="container">
@@ -261,29 +262,93 @@
     <section class="game">
       <!--Player card container-->
       <div class="container">
-        <div class="card border-dark mb-3" style="width: 15rem">
+        <div class="card border-dark mb-3 mt-4" style="width: 20rem">
           <!--Pokemon Title/Id and Image-->
           <div class="card-header d-flex justify-content-between">
-            <h5 class="align-middle">Pokemon</h5>
-            <h5 class="align-middle">#057</h5>
+            <h5 class="align-middle" id="playerName">Pokemon</h5>
+            <h5 class="align-middle" id="playerId">#057</h5>
           </div>
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/451.png"
             class="card-img-top"
+            id="playerImg"
           />
-          
+
           <ul class="list-group list-group-horizontal">
-            <a href="#" class="list-group-item list-group-item-action p-2">
-                <span>Height: <span id="weightValue" class="badge bg-secondary">x</span></span>
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center"
+            >
+              <img
+                src="./assets/height.svg"
+                width="20"
+                height="20"
+                class="flex-shrink-0 me-2"
+              /><span
+                >Height:
+                <span id="playerHeight" class="badge bg-secondary"
+                  >x</span
+                ></span
+              >
             </a>
-            <a href="#" class="list-group-item list-group-item-action p-2">
-                <span>Weight: <span id="weightValue" class="badge bg-secondary">x</span></span>
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center"
+            >
+              <img
+                src="./assets/weight.svg"
+                width="20"
+                height="20"
+                class="flex-shrink-0 me-2"
+              /><span
+                >Weight:
+                <span id="playerWeight" class="badge bg-secondary"
+                  >x</span
+                ></span
+              >
             </a>
           </ul>
 
-          <!--Attack Stat-->
+          <!--HP Stat-->
           <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action p-2">
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action p-2"
+              onclick="newCard()"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="me-2">Health</span>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="./assets/health.svg"
+                    width="20"
+                    height="20"
+                    class="flex-shrink-0 me-2"
+                  />
+                  <span
+                    id="playerHealth"
+                    class="badge bg-secondary text-white fs-6 me-2"
+                    >50</span
+                  >
+                </div>
+              </div>
+              <div class="progress mt-2">
+                <div
+                  id="playerHealthProgress"
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </a>
+          </div>
+
+          <!--Attack-->
+          <div class="list-group">
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action p-2"
+            >
               <div class="d-flex justify-content-between align-items-center">
                 <span class="me-2">Attack</span>
                 <div class="d-flex align-items-center">
@@ -293,7 +358,9 @@
                     height="20"
                     class="flex-shrink-0 me-2"
                   />
-                  <span id="playerAttack" class="badge bg-secondary text-white fs-6 me-2"
+                  <span
+                    id="playerAttack"
+                    class="badge bg-secondary text-white fs-6 me-2"
                     >50</span
                   >
                 </div>
@@ -303,7 +370,139 @@
                   id="playerAttackProgress"
                   class="progress-bar bg-success"
                   role="progressbar"
-                  style="width: 50%;"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </a>
+          </div>
+
+          <!--Defence Stat-->
+          <div class="list-group">
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action p-2"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="me-2">Defence</span>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="./assets/defence.svg"
+                    width="20"
+                    height="20"
+                    class="flex-shrink-0 me-2"
+                  />
+                  <span
+                    id="playerDefence"
+                    class="badge bg-secondary text-white fs-6 me-2"
+                    >50</span
+                  >
+                </div>
+              </div>
+              <div class="progress mt-2">
+                <div
+                  id="playerDefenceProgress"
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </a>
+          </div>
+
+          <!--Sp Attack Stat-->
+          <div class="list-group">
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action p-2"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="me-2">Sp. Attack</span>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="./assets/spattack.svg"
+                    width="20"
+                    height="20"
+                    class="flex-shrink-0 me-2"
+                  />
+                  <span
+                    id="playerSpAttack"
+                    class="badge bg-secondary text-white fs-6 me-2"
+                    >50</span
+                  >
+                </div>
+              </div>
+              <div class="progress mt-2">
+                <div
+                  id="playerSpAttackProgress"
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </a>
+          </div>
+
+          <!--Sp. Defence Stat-->
+          <div class="list-group">
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action p-2"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="me-2">Sp. Defence</span>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="./assets/spdefence.svg"
+                    width="20"
+                    height="20"
+                    class="flex-shrink-0 me-2"
+                  />
+                  <span
+                    id="playerSpDefence"
+                    class="badge bg-secondary text-white fs-6 me-2"
+                    >50</span
+                  >
+                </div>
+              </div>
+              <div class="progress mt-2">
+                <div
+                  id="playerSpDefenceProgress"
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </a>
+          </div>
+
+          <!--Speed Stat-->
+          <div class="list-group">
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action p-2"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="me-2">Speed</span>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="./assets/speed.svg"
+                    width="20"
+                    height="20"
+                    class="flex-shrink-0 me-2"
+                  />
+                  <span
+                    id="playerSpeed"
+                    class="badge bg-secondary text-white fs-6 me-2"
+                    >50</span
+                  >
+                </div>
+              </div>
+              <div class="progress mt-2">
+                <div
+                  id="playerSpeedProgress"
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: 50%"
                 ></div>
               </div>
             </a>
