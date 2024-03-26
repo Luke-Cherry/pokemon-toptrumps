@@ -1,10 +1,34 @@
 .progress {
-    height: 0.2rem;
+  height: 0.2rem;
 }
 .list-group {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .card .list-group {
-    border: 0;
+  border: 0;
+}
+
+.pc-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.pc-item {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.green-pattern {
+  background-color: #c8e6c9; /* Light green */
+}
+.pokemon-sprite {
+  width: 2.5em; /* Adjust size as needed */
+  height: 2.5rem;
+  object-fit: contain;
+  margin: 2px; /* Minimal margin */
 }
