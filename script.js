@@ -14,6 +14,7 @@ const GENERATIONLIST = {
 const scoringDiv = document.getElementById("scoringDiv");
 const numberOfCards = document.getElementById("noOfCards");
 const nextCardBtn = document.getElementById("nextCardBtn");
+const cardOverlay = document.getElementById("overlay");
 
 //Player card name/image
 const playerName = document.getElementById("playerName");
@@ -91,8 +92,20 @@ const computerSpattackSelected = document.getElementById("computerSpattackSelect
 const computerSpdefenceSelected = document.getElementById("computerSpdefenceSelected");
 const computerSpeedSelected = document.getElementById("computerSpeedSelected");
 
+//Card borders
+const playerCardBorder = document.getElementById("playerCardBorder");
+const computerCardBorder = document.getElementById("computerCardBorder");
+
 let playerPokemonArray = [];
 let computerPokemonArray = [];
+
+const showCardOverlay = () => {
+  cardOverlay.style.display = "block";
+};
+
+const hideCardOverlay = () => {
+  cardOverlay.style.display = "none";
+};
 
 const startGame = async () => {
   // Get generations selected
@@ -130,6 +143,7 @@ const startGame = async () => {
 
   updatePlayerCard(playerPokemonArray[0]);
   updateComputerCard(computerPokemonArray[0]);
+  updateGif();
 
   // Hide the hero section
   document.querySelector(".hero").style.display = "none";
@@ -163,7 +177,7 @@ const getPokemon = async (id) => {
         height: data.height,
         health: data.stats[0].base_stat,
         attack: data.stats[1].base_stat,
-        defense: data.stats[2].base_stat,
+        defence: data.stats[2].base_stat,
         spattack: data.stats[3].base_stat,
         spdefence: data.stats[4].base_stat,
         speed: data.stats[5].base_stat,
@@ -186,7 +200,7 @@ const updatePlayerCard = (pokeData) => {
   //Set pokemon stats
   playerHealth.textContent = pokeData.stats.health;
   playerAttack.textContent = pokeData.stats.attack;
-  playerDefence.textContent = pokeData.stats.defense;
+  playerDefence.textContent = pokeData.stats.defence;
   playerSpAttack.textContent = pokeData.stats.spattack;
   playerSpDefence.textContent = pokeData.stats.spdefence;
   playerSpeed.textContent = pokeData.stats.speed;
@@ -194,7 +208,7 @@ const updatePlayerCard = (pokeData) => {
   //Set pokemon stat progress bars
   playerHealthProgress.style.width = `${(pokeData.stats.health / 255) * 100}%`;
   playerAttackProgress.style.width = `${(pokeData.stats.attack / 255) * 100}%`;
-  playerDefenceProgress.style.width = `${(pokeData.stats.defense / 255) * 100}%`;
+  playerDefenceProgress.style.width = `${(pokeData.stats.defence / 255) * 100}%`;
   playerSpAttackProgress.style.width = `${(pokeData.stats.spattack / 255) * 100}%`;
   playerSpDefenceProgress.style.width = `${(pokeData.stats.spdefence / 255) * 100}%`;
   playerSpeedProgress.style.width = `${(pokeData.stats.speed / 255) * 100}%`;
@@ -211,7 +225,7 @@ const updateComputerCard = (pokeData) => {
   // Set pokemon stats
   computerHealth.textContent = pokeData.stats.health;
   computerAttack.textContent = pokeData.stats.attack;
-  computerDefence.textContent = pokeData.stats.defense;
+  computerDefence.textContent = pokeData.stats.defence;
   computerSpAttack.textContent = pokeData.stats.spattack;
   computerSpDefence.textContent = pokeData.stats.spdefence;
   computerSpeed.textContent = pokeData.stats.speed;
@@ -219,7 +233,7 @@ const updateComputerCard = (pokeData) => {
   // Set pokemon stat progress bars
   computerHealthProgress.style.width = `${(pokeData.stats.health / 255) * 100}%`;
   computerAttackProgress.style.width = `${(pokeData.stats.attack / 255) * 100}%`;
-  computerDefenceProgress.style.width = `${(pokeData.stats.defense / 255) * 100}%`;
+  computerDefenceProgress.style.width = `${(pokeData.stats.defence / 255) * 100}%`;
   computerSpAttackProgress.style.width = `${(pokeData.stats.spattack / 255) * 100}%`;
   computerSpDefenceProgress.style.width = `${(pokeData.stats.spdefence / 255) * 100}%`;
   computerSpeedProgress.style.width = `${(pokeData.stats.speed / 255) * 100}%`;
@@ -255,6 +269,14 @@ const updateGif = () => {
           alt="Pokemon Sprite"
       />
   </div>`;
+    } else {
+      tempPlayer += `<div>
+      <img
+          src="./assets/pokeball.gif"
+          class="pokemon-sprite mx-auto d-block"
+          alt="Pokemon Sprite"
+      />
+  </div>`;
     }
   });
   computerPokemonArray.forEach((pokemon) => {
@@ -262,6 +284,14 @@ const updateGif = () => {
       tempComputer += `<div>
       <img
           src="${pokemon.gifUrl}"
+          class="pokemon-sprite mx-auto d-block"
+          alt="Pokemon Sprite"
+      />
+  </div>`;
+    } else {
+      tempComputer += `<div>
+      <img
+          src="./assets/pokeball.gif"
           class="pokemon-sprite mx-auto d-block"
           alt="Pokemon Sprite"
       />
@@ -275,6 +305,8 @@ const updateGif = () => {
 const compareStats = (selectedStat) => {
   const playerStat = parseInt(playerPokemonArray[0].stats[selectedStat]);
   const computerStat = parseInt(computerPokemonArray[0].stats[selectedStat]);
+  console.log("player-stats:", playerStat);
+  console.log("computer-stats:", computerStat);
 
   if (playerStat > computerStat) {
     console.log("Player wins");
@@ -290,6 +322,7 @@ const compareStats = (selectedStat) => {
     newCard("draw");
   }
   disableButtons();
+  hideCardOverlay();
   nextCardBtn.classList.remove("disabled");
 };
 
@@ -302,16 +335,23 @@ const highlightWinner = (winner, selectedStat) => {
   const loseColor = "#e6c8c8";
   const drawColor = "#c0c0c0";
 
+
   // Apply colors based on the winner
   if (winner === "player") {
     document.getElementById(playerSelectedId).style.backgroundColor = winColor;
     document.getElementById(computerSelectedId).style.backgroundColor = loseColor;
+    playerCardBorder.style.outline = `5px solid ${winColor}`;
+    computerCardBorder.style.outline = `5px solid ${loseColor}`;
   } else if (winner === "computer") {
     document.getElementById(playerSelectedId).style.backgroundColor = loseColor;
     document.getElementById(computerSelectedId).style.backgroundColor = winColor;
+    playerCardBorder.style.outline = `5px solid ${loseColor}`;
+    computerCardBorder.style.outline = `5px solid ${winColor}`;
   } else {
     document.getElementById(playerSelectedId).style.backgroundColor = drawColor;
     document.getElementById(computerSelectedId).style.backgroundColor = drawColor;
+    playerCardBorder.style.outline = `5px solid ${drawColor}`;
+    computerCardBorder.style.outline = `5px solid ${drawColor}`;
   }
 };
 
@@ -352,6 +392,7 @@ nextCardBtn.addEventListener("click", () => {
   updateComputerCard(computerPokemonArray[0]);
   nextCardBtn.classList.add("disabled");
   updateScore();
+  showCardOverlay();
 });
 
 const disableButtons = () => {
@@ -393,4 +434,6 @@ const removeBackground = () => {
   computerSpattackSelected.style.backgroundColor = null;
   computerSpdefenceSelected.style.backgroundColor = null;
   computerSpeedSelected.style.backgroundColor = null;
-};
+  playerCardBorder.style.outline = null;
+  computerCardBorder.style.outline = null;
+}

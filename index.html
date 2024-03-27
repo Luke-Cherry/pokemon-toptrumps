@@ -123,13 +123,13 @@
               </div>
             </form>
             <label for="noOfCards" class="form-label mt-4 fs-5 text-center">Number of cards per player:</label
-            ><output class="fs-5 ms-2 badge text-bg-success">30</output>
+            ><output class="fs-5 ms-2 badge text-bg-success">10</output>
             <input
               type="range"
               class="form-range"
               min="10"
               max="50"
-              vlaue="15"
+              value="10"
               id="noOfCards"
               oninput="this.previousElementSibling.value = this.value"
             />
@@ -149,7 +149,7 @@
       <div class="row">
         <div class="col-md-4">
           <div class="container d-flex justify-content-center">
-            <div class="card mb-3 mt-4 w-75">
+            <div class="card mb-3 mt-4 w-75" id="playerCardBorder">
               <!-- Pokemon Title/Id and Image -->
               <div class="card-header d-flex justify-content-between">
                 <h5 class="align-middle" id="playerName">Pokemon</h5>
@@ -295,14 +295,14 @@
             </div>
 
             <div class="card red-pattern">
-              <h6 class="text-center px-2">Their Pokemon</h6>
+              <h6 class="text-center px-2">Opponents Pokemon</h6>
               <div class="card-body d-flex flex-wrap py-0" id="gifComputerPokemon"></div>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="container d-flex justify-content-center">
-            <div class="card mb-3 mt-4 w-75">
+            <div class="card mb-3 mt-4 w-75" id="computerCardBorder">
               <!-- Pokemon Title/Id and Image -->
               <div class="card-header d-flex justify-content-between">
                 <h5 class="align-middle" id="computerName">Pokemon</h5>
@@ -429,7 +429,7 @@
                   </div>
                 </a>
               </div>
-              <div class="overlay"></div>
+              <div class="overlay" id="overlay"></div>
             </div>
           </div>
         </div>
