@@ -26,9 +26,48 @@
 .green-pattern {
   background-color: #c8e6c9; /* Light green */
 }
+
+.red-pattern {
+  background-color: #e6c8c8; /* Light red */
+}
+
 .pokemon-sprite {
-  width: 2.5em; /* Adjust size as needed */
-  height: 2.5rem;
+  width: 2em; /* Adjust size as needed */
+  height: 2rem;
   object-fit: contain;
-  margin: 2px; /* Minimal margin */
+  margin: 1px; /* Minimal margin */
+}
+
+.pokeImgContainer {
+  width: auto;
+  height: 10rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 990px) {
+  .list-group-horizontal {
+    flex-direction: column;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: #78b7e8;
+  opacity: 1;
+  background-image: linear-gradient(135deg, #a8dbf4 25%, transparent 25%),
+    linear-gradient(225deg, #a8dbf4 25%, transparent 25%),
+    linear-gradient(45deg, #a8dbf4 25%, transparent 25%),
+    linear-gradient(315deg, #a8dbf4 25%, #78b7e8 25%);
+  background-position: 16px 0, 16px 0, 0 0, 0 0;
+  background-size: 32px 32px;
+  background-repeat: repeat;
+  display: none;
 }

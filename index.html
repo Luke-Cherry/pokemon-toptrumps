@@ -20,22 +20,9 @@
       <div class="container-fluid">
         <!-- Logo on the left -->
         <a class="navbar-brand" href="javascript:void(0);">
-          <img
-            src="./assets/logo.svg"
-            alt="Pokemon Logo"
-            width="auto"
-            height="30px"
-            class="d-inline-block align-top"
-          />
+          <img src="./assets/logo.svg" alt="Pokemon Logo" width="auto" height="30px" class="d-inline-block align-top" />
           Pokemon Top Trumps
         </a>
-
-        <!-- Scoring information on the right -->
-        <div id="scoringDiv" class="navbar-text ms-auto fs-5">
-          <span>Total Cards: 52</span>
-          <span class="mx-2">You: 20</span>
-          <span>Computer: 18</span>
-        </div>
       </div>
     </nav>
 
@@ -48,24 +35,19 @@
               <h2>Game Rules</h2>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                  <strong>Objective:</strong> To win you have to have the most
-                  cards at the end of the game
+                  <strong>Objective:</strong> To win you have to have the most cards at the end of the game
+                </li>
+                <li class="list-group-item">Each player starts with a random deck of pokemon cards</li>
+                <li class="list-group-item">
+                  The player selects a category from their top card (e.g. height, attack, strength)
                 </li>
                 <li class="list-group-item">
-                  Each player starts with a random deck of pokemon cards
+                  The player with the highest value in the category wins the card and places both cards at the back of
+                  their deck
                 </li>
                 <li class="list-group-item">
-                  The player selects a category from their top card (e.g.
-                  height, attack, strength)
-                </li>
-                <li class="list-group-item">
-                  The player with the highest value in the category wins the
-                  card and places both cards at the back of their deck
-                </li>
-                <li class="list-group-item">
-                  If there is a tie, all cards are placed in the center and the
-                  same player remains the dealer for the next round. The winner
-                  gets all the central cards
+                  If there is a tie, all cards are placed in the center and the same player remains the dealer for the
+                  next round. The winner gets all the central cards
                 </li>
                 <li class="list-group-item">
                   First player to get all the cards
@@ -76,11 +58,7 @@
           </div>
         </div>
 
-        <button
-          class="btn btn-primary btn-lg"
-          data-bs-toggle="modal"
-          data-bs-target="#generationModal"
-        >
+        <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#generationModal">
           Start Game
         </button>
       </div>
@@ -100,130 +78,57 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="generationModalLabel">Game Settings</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="generationForm" class="fs-6">
-              <label class="mb-2"
-                >Select which generations of pokemon you wish to use for the
-                deck</label
-              >
+              <label class="mb-2">Select which generations of pokemon you wish to use for the deck</label>
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="1"
-                  id="generation1"
-                  checked
-                />
-                <label class="form-check-label" for="generation1">
-                  Generation 1 (151 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="1" id="generation1" checked />
+                <label class="form-check-label" for="generation1"> Generation 1 (151 pokemon) </label>
               </div>
 
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="2"
-                  id="generation2"
-                />
-                <label class="form-check-label" for="generation2">
-                  Generation 2 (100 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="2" id="generation2" />
+                <label class="form-check-label" for="generation2"> Generation 2 (100 pokemon) </label>
               </div>
 
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="3"
-                  id="generation3"
-                />
-                <label class="form-check-label" for="generation3">
-                  Generation 3 (135 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="3" id="generation3" />
+                <label class="form-check-label" for="generation3"> Generation 3 (135 pokemon) </label>
               </div>
 
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="4"
-                  id="generation4"
-                />
-                <label class="form-check-label" for="generation4">
-                  Generation 4 (107 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="4" id="generation4" />
+                <label class="form-check-label" for="generation4"> Generation 4 (107 pokemon) </label>
               </div>
 
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="5"
-                  id="generation5"
-                />
-                <label class="form-check-label" for="generation5">
-                  Generation 5 (156 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="5" id="generation5" />
+                <label class="form-check-label" for="generation5"> Generation 5 (156 pokemon) </label>
               </div>
 
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="6"
-                  id="generation6"
-                />
-                <label class="form-check-label" for="generation6">
-                  Generation 6 (72 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="6" id="generation6" />
+                <label class="form-check-label" for="generation6"> Generation 6 (72 pokemon) </label>
               </div>
 
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="7"
-                  id="generation7"
-                />
-                <label class="form-check-label" for="generation7">
-                  Generation 7 (88 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="7" id="generation7" />
+                <label class="form-check-label" for="generation7"> Generation 7 (88 pokemon) </label>
               </div>
 
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="8"
-                  id="generation8"
-                />
-                <label class="form-check-label" for="generation8">
-                  Generation 8 (96 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="8" id="generation8" />
+                <label class="form-check-label" for="generation8"> Generation 8 (96 pokemon) </label>
               </div>
 
               <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="9"
-                  id="generation9"
-                />
-                <label class="form-check-label" for="generation9">
-                  Generation 9 (120 pokemon)
-                </label>
+                <input class="form-check-input" type="checkbox" value="9" id="generation9" />
+                <label class="form-check-label" for="generation9"> Generation 9 (120 pokemon) </label>
               </div>
             </form>
-            <label for="noOfCards" class="form-label mt-4 fs-5 text-center"
-              >Number of cards per player:</label
+            <label for="noOfCards" class="form-label mt-4 fs-5 text-center">Number of cards per player:</label
             ><output class="fs-5 ms-2 badge text-bg-success">30</output>
             <input
               type="range"
@@ -245,704 +150,381 @@
             >
               Start Game
             </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
 
-    <section class="game row">
+    <section class="container">
       <!--Player card container-->
-      <div class="col">
-        <div class="container d-flex justify-content-center">
-          <div class="card mb-3 mt-4" style="width: 20rem">
-            <!-- Pokemon Title/Id and Image -->
-            <div class="card-header d-flex justify-content-between">
-              <h5 class="align-middle" id="playerName">Pokemon</h5>
-              <h5 class="align-middle" id="playerId">#057</h5>
-            </div>
-            <div
-              style="
-                width: auto;
-                height: 10rem;
-                overflow: hidden;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              "
-            >
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/451.png"
-                class="card-img-top"
-                id="playerImg"
-                style="max-width: 95%; max-height: 95%; object-fit: contain"
-              />
-            </div>
-            <!-- Height and Weight -->
-            <ul class="list-group list-group-horizontal">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center"
-                style="border-radius: 0"
-              >
+      <div class="row">
+        <div class="col-md-4">
+          <div class="container d-flex justify-content-center">
+            <div class="card mb-3 mt-4 w-75">
+              <!-- Pokemon Title/Id and Image -->
+              <div class="card-header d-flex justify-content-between">
+                <h5 class="align-middle" id="playerName">Pokemon</h5>
+                <h5 class="align-middle" id="playerId">#057</h5>
+              </div>
+              <div class="pokeImgContainer">
                 <img
-                  src="./assets/height.svg"
-                  width="20"
-                  height="20"
-                  class="flex-shrink-0 me-2"
-                /><span
-                  >Height:
-                  <span id="playerHeight" class="fs-6 me-2">x</span></span
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/451.png"
+                  class="card-img-top"
+                  id="playerImg"
+                  style="max-width: 95%; max-height: 95%; object-fit: contain"
+                />
+              </div>
+              <!-- Height and Weight -->
+              <ul class="list-group list-group-horizontal">
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center"
+                  style="border-radius: 0"
+                  id="heightSelected"
                 >
-              </a>
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center"
-                style="border-radius: 0"
-              >
-                <img
-                  src="./assets/weight.svg"
-                  width="20"
-                  height="20"
-                  class="flex-shrink-0 me-2"
-                /><span
-                  >Weight:
-                  <span id="playerWeight" class="fs-6 me-2">x</span></span
+                  <img src="./assets/height.svg" width="20" height="20" class="flex-shrink-0 me-2" /><span
+                    >Height: <span id="playerHeight" class="fs-6 me-2">x</span></span
+                  >
+                </a>
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center"
+                  style="border-radius: 0"
+                  id="weightSelected"
                 >
-              </a>
-            </ul>
-            <!-- Health Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-                onclick="newCard()"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Health</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/health.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerHealth" class="fs-6 me-2">50</span>
+                  <img src="./assets/weight.svg" width="20" height="20" class="flex-shrink-0 me-2" /><span
+                    >Weight: <span id="playerWeight" class="fs-6 me-2">x</span></span
+                  >
+                </a>
+              </ul>
+              <!-- Health Stat -->
+              <div class="list-group">
+                <a href="javascript:void(0);" class="list-group-item list-group-item-action p-2" id="healthSelected">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Health</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/health.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="playerHealth" class="fs-6 me-2">50</span>
+                    </div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerHealthProgress"
-                    class="progress-bar bg-success"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Attack Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Attack</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/sword.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerAttack" class="fs-6 me-2">50</span>
+                  <div class="progress mt-1">
+                    <div
+                      id="playerHealthProgress"
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerAttackProgress"
-                    class="progress-bar bg-danger"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Defense Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Defense</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/defence.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerDefence" class="fs-6 me-2">50</span>
+                </a>
+              </div>
+              <!-- Attack Stat -->
+              <div class="list-group">
+                <a href="javascript:void(0);" class="list-group-item list-group-item-action p-2" id="attackSelected">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Attack</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/sword.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="playerAttack" class="fs-6 me-2">50</span>
+                    </div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerDefenceProgress"
-                    class="progress-bar bg-primary"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Special Attack Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Sp. Attack</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/spattack.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerSpAttack" class="fs-6 me-2">50</span>
+                  <div class="progress mt-1">
+                    <div
+                      id="playerAttackProgress"
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerSpAttackProgress"
-                    class="progress-bar bg-warning"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Special Defense Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Sp. Defense</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/spdefence.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerSpDefence" class="fs-6 me-2">50</span>
+                </a>
+              </div>
+              <!-- Defence Stat -->
+              <div class="list-group">
+                <a href="javascript:void(0);" class="list-group-item list-group-item-action p-2" id="defenceSelected">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Defence</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/defence.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="playerDefence" class="fs-6 me-2">50</span>
+                    </div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerSpDefenceProgress"
-                    class="progress-bar bg-info"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Speed Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Speed</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/speed.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerSpeed" class="fs-6 me-2">50</span>
+                  <div class="progress mt-1">
+                    <div
+                      id="playerDefenceProgress"
+                      class="progress-bar bg-primary"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerSpeedProgress"
-                    class="progress-bar bg-secondary"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
+                </a>
+              </div>
+              <!-- Special Attack Stat -->
+              <div class="list-group">
+                <a href="javascript:void(0);" class="list-group-item list-group-item-action p-2" id="spattackSelected">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Sp. Attack</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/spattack.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="playerSpAttack" class="fs-6 me-2">50</span>
+                    </div>
+                  </div>
+                  <div class="progress mt-1">
+                    <div
+                      id="playerSpAttackProgress"
+                      class="progress-bar bg-warning"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
+                  </div>
+                </a>
+              </div>
+              <!-- Special Defence Stat -->
+              <div class="list-group">
+                <a href="javascript:void(0);" class="list-group-item list-group-item-action p-2" id="spdefenceSelected">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Sp. Defence</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/spdefence.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="playerSpDefence" class="fs-6 me-2">50</span>
+                    </div>
+                  </div>
+                  <div class="progress mt-1">
+                    <div
+                      id="playerSpDefenceProgress"
+                      class="progress-bar bg-info"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
+                  </div>
+                </a>
+              </div>
+              <!-- Speed Stat -->
+              <div class="list-group">
+                <a href="javascript:void(0);" class="list-group-item list-group-item-action p-2" id="speedSelected">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Speed</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/speed.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="playerSpeed" class="fs-6 me-2">50</span>
+                    </div>
+                  </div>
+                  <div class="progress mt-1">
+                    <div
+                      id="playerSpeedProgress"
+                      class="progress-bar bg-secondary"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="container mt-4 d-flex justify-content-center">
-          <div class="card green-pattern">
-            <div class="card-header text-center">Players Pokemon</div>
-            <div
-              class="card-body d-flex flex-wrap justify-content-start align-items-start"
-            >
-              <!-- Repeat this div for each sprite -->
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/132.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/133.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/134.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/135.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/136.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/137.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/138.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/139.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/140.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/141.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
 
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/142.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
+        <div class="col-md-4">
+          <div class="container mt-4 d-flex align-content-center flex-column">
+            <div class="card text-center mb-2">
+              <h5 class="card-header">Cards: You 30 | 40 Computer</h5>
+              <div class="card-body">
+                <h5 class="card-title">Choose your stat</h5>
+                <a class="btn btn-primary disabled">Next Card</a>
               </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/143.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/144.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/145.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/146.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
+            </div>
+            <div class="card green-pattern mb-2">
+              <h6 class="text-center px-2">Your Pokemon</h6>
+              <div class="card-body d-flex flex-wrap justify-content-between py-0" id="gifPlayerPokemon"></div>
+            </div>
 
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/147.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/148.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/149.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/150.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/151.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/152.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/153.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/154.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/155.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/156.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/157.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/158.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/159.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/160.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/161.gif"
-                  class="pokemon-sprite mx-auto d-block"
-                  alt="Pokemon Sprite"
-                />
-              </div>
-
-              <!-- End of repeat -->
+            <div class="card red-pattern">
+              <h6 class="text-center px-2">Their Pokemon</h6>
+              <div class="card-body d-flex flex-wrap justify-content-between py-0" id="gifComputerPokemon"></div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="container d-flex justify-content-center">
-          <div class="card mb-3 mt-4" style="width: 20rem">
-            <!-- Pokemon Title/Id and Image -->
-            <div class="card-header d-flex justify-content-between">
-              <h5 class="align-middle" id="playerName">Pokemon</h5>
-              <h5 class="align-middle" id="playerId">#057</h5>
-            </div>
-            <div
-              style="
-                width: 320px;
-                height: 200px;
-                overflow: hidden;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              "
-            >
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/451.png"
-                class="card-img-top"
-                id="playerImg"
-                style="max-width: 95%; max-height: 95%; object-fit: contain"
-              />
-            </div>
-            <!-- Height and Weight -->
-            <ul class="list-group list-group-horizontal">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center"
-                style="border-radius: 0"
-              >
+        <div class="col-md-4">
+          <div class="container d-flex justify-content-center">
+            <div class="card mb-3 mt-4 w-75">
+              <!-- Pokemon Title/Id and Image -->
+              <div class="card-header d-flex justify-content-between">
+                <h5 class="align-middle" id="computerName">Pokemon</h5>
+                <h5 class="align-middle" id="computerId">#057</h5>
+              </div>
+              <div class="pokeImgContainer">
                 <img
-                  src="./assets/height.svg"
-                  width="20"
-                  height="20"
-                  class="flex-shrink-0 me-2"
-                /><span
-                  >Height:
-                  <span id="playerHeight" class="fs-6 me-2">x</span></span
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/451.png"
+                  class="card-img-top"
+                  id="computerImg"
+                  style="max-width: 95%; max-height: 95%; object-fit: contain"
+                />
+              </div>
+              <!-- Height and Weight -->
+              <ul class="list-group list-group-horizontal">
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center disabled"
+                  style="border-radius: 0"
+                  id="computerHeightSelected"
                 >
-              </a>
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center"
-                style="border-radius: 0"
-              >
-                <img
-                  src="./assets/weight.svg"
-                  width="20"
-                  height="20"
-                  class="flex-shrink-0 me-2"
-                /><span
-                  >Weight:
-                  <span id="playerWeight" class="fs-6 me-2">x</span></span
+                  <img src="./assets/height.svg" width="20" height="20" class="flex-shrink-0 me-2" /><span
+                    >Height: <span id="computerHeight" class="fs-6 me-2">x</span></span
+                  >
+                </a>
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 d-flex justify-content-center align-items-center disabled"
+                  style="border-radius: 0"
+                  id="computerWeightSelected"
                 >
-              </a>
-            </ul>
-            <!-- Health Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-                onclick="newCard()"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Health</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/health.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerHealth" class="fs-6 me-2">50</span>
+                  <img src="./assets/weight.svg" width="20" height="20" class="flex-shrink-0 me-2" /><span
+                    >Weight: <span id="computerWeight" class="fs-6 me-2">x</span></span
+                  >
+                </a>
+              </ul>
+              <!-- Health Stat -->
+              <div class="list-group">
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 disabled"
+                  id="computerHealthSelected"
+                >
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Health</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/health.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="computerHealth" class="fs-6 me-2">50</span>
+                    </div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerHealthProgress"
-                    class="progress-bar bg-success"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Attack Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Attack</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/sword.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerAttack" class="fs-6 me-2">50</span>
+                  <div class="progress mt-1">
+                    <div
+                      id="computerHealthProgress"
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerAttackProgress"
-                    class="progress-bar bg-danger"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Defense Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Defense</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/defence.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerDefence" class="fs-6 me-2">50</span>
+                </a>
+              </div>
+              <!-- Attack Stat -->
+              <div class="list-group">
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 disabled"
+                  id="computerAttackSelected"
+                >
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Attack</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/sword.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="computerAttack" class="fs-6 me-2">50</span>
+                    </div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerDefenceProgress"
-                    class="progress-bar bg-primary"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Special Attack Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Sp. Attack</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/spattack.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerSpAttack" class="fs-6 me-2">50</span>
+                  <div class="progress mt-1">
+                    <div
+                      id="computerAttackProgress"
+                      class="progress-bar bg-danger"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerSpAttackProgress"
-                    class="progress-bar bg-warning"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Special Defense Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Sp. Defense</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/spdefence.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerSpDefence" class="fs-6 me-2">50</span>
+                </a>
+              </div>
+              <!-- Defence Stat -->
+              <div class="list-group">
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 disabled"
+                  id="computerDefenceSelected"
+                >
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Defence</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/defence.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="computerDefence" class="fs-6 me-2">50</span>
+                    </div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerSpDefenceProgress"
-                    class="progress-bar bg-info"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
-            </div>
-            <!-- Speed Stat -->
-            <div class="list-group">
-              <a
-                href="javascript:void(0);"
-                class="list-group-item list-group-item-action p-2"
-              >
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="me-2">Speed</span>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="./assets/speed.svg"
-                      width="20"
-                      height="20"
-                      class="flex-shrink-0 me-2"
-                    />
-                    <span id="playerSpeed" class="fs-6 me-2">50</span>
+                  <div class="progress mt-1">
+                    <div
+                      id="computerDefenceProgress"
+                      class="progress-bar bg-primary"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
                   </div>
-                </div>
-                <div class="progress mt-2">
-                  <div
-                    id="playerSpeedProgress"
-                    class="progress-bar bg-secondary"
-                    role="progressbar"
-                    style="width: 50%"
-                  ></div>
-                </div>
-              </a>
+                </a>
+              </div>
+              <!-- Special Attack Stat -->
+              <div class="list-group">
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 disabled"
+                  id="computerSpattackSelected"
+                >
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Sp. Attack</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/spattack.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="computerSpAttack" class="fs-6 me-2">50</span>
+                    </div>
+                  </div>
+                  <div class="progress mt-1">
+                    <div
+                      id="computerSpAttackProgress"
+                      class="progress-bar bg-warning"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
+                  </div>
+                </a>
+              </div>
+              <!-- Special Defense Stat -->
+              <div class="list-group">
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 disabled"
+                  id="computerSpdefenceSelected"
+                >
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Sp. Defense</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/spdefence.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="computerSpDefence" class="fs-6 me-2">50</span>
+                    </div>
+                  </div>
+                  <div class="progress mt-1">
+                    <div
+                      id="computerSpDefenceProgress"
+                      class="progress-bar bg-info"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
+                  </div>
+                </a>
+              </div>
+              <!-- Speed Stat -->
+              <div class="list-group">
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action p-2 disabled"
+                  id="computerSpeedSelected"
+                >
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="me-2">Speed</span>
+                    <div class="d-flex align-items-center">
+                      <img src="./assets/speed.svg" width="20" height="20" class="flex-shrink-0 me-2" />
+                      <span id="computerSpeed" class="fs-6 me-2">50</span>
+                    </div>
+                  </div>
+                  <div class="progress mt-1">
+                    <div
+                      id="computerSpeedProgress"
+                      class="progress-bar bg-secondary"
+                      role="progressbar"
+                      style="width: 50%"
+                    ></div>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
