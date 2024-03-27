@@ -282,10 +282,13 @@
 
         <div class="col-md-4">
           <div class="container mt-4 d-flex align-content-center flex-column">
+            <div id="gameAlert">
+                <div class="alert alert-secondary text-center font-weight-bold heading-3" role="alert">Pick your stat to beat the opponent</div>
+            </div>
+
             <div class="card text-center mb-2">
               <h5 class="card-header" id="scoringDiv">Cards: You 30 | 40 Computer</h5>
               <div class="card-body">
-                <h5 class="card-title">Choose your stat</h5>
                 <a class="btn btn-primary disabled" id="nextCardBtn">Next Card</a>
               </div>
             </div>
@@ -293,7 +296,6 @@
               <h6 class="text-center px-2">Your Pokemon</h6>
               <div class="card-body d-flex flex-wrap py-0" id="gifPlayerPokemon"></div>
             </div>
-
             <div class="card red-pattern">
               <h6 class="text-center px-2">Opponents Pokemon</h6>
               <div class="card-body d-flex flex-wrap py-0" id="gifComputerPokemon"></div>

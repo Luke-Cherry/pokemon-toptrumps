@@ -15,6 +15,7 @@ const scoringDiv = document.getElementById("scoringDiv");
 const numberOfCards = document.getElementById("noOfCards");
 const nextCardBtn = document.getElementById("nextCardBtn");
 const cardOverlay = document.getElementById("overlay");
+const gameAlert = document.getElementById("gameAlert");
 
 //Player card name/image
 const playerName = document.getElementById("playerName");
@@ -335,23 +336,25 @@ const highlightWinner = (winner, selectedStat) => {
   const loseColor = "#e6c8c8";
   const drawColor = "#c0c0c0";
 
-
   // Apply colors based on the winner
   if (winner === "player") {
     document.getElementById(playerSelectedId).style.backgroundColor = winColor;
     document.getElementById(computerSelectedId).style.backgroundColor = loseColor;
     playerCardBorder.style.outline = `5px solid ${winColor}`;
     computerCardBorder.style.outline = `5px solid ${loseColor}`;
+    gameAlert.innerHTML = `<div class="alert alert-success text-center font-weight-bold heading-3" role="alert">Your card wins!</div>`;
   } else if (winner === "computer") {
     document.getElementById(playerSelectedId).style.backgroundColor = loseColor;
     document.getElementById(computerSelectedId).style.backgroundColor = winColor;
     playerCardBorder.style.outline = `5px solid ${loseColor}`;
     computerCardBorder.style.outline = `5px solid ${winColor}`;
+    gameAlert.innerHTML = `<div class="alert alert-danger text-center font-weight-bold heading-3" role="alert">Your card loses!</div>`;
   } else {
     document.getElementById(playerSelectedId).style.backgroundColor = drawColor;
     document.getElementById(computerSelectedId).style.backgroundColor = drawColor;
     playerCardBorder.style.outline = `5px solid ${drawColor}`;
     computerCardBorder.style.outline = `5px solid ${drawColor}`;
+    gameAlert.innerHTML = `<div class="alert alert-secondary text-center font-weight-bold heading-3" role="alert">You both draw!</div>`;
   }
 };
 
@@ -436,4 +439,5 @@ const removeBackground = () => {
   computerSpeedSelected.style.backgroundColor = null;
   playerCardBorder.style.outline = null;
   computerCardBorder.style.outline = null;
-}
+  gameAlert.innerHTML = `<div class="alert alert-secondary text-center font-weight-bold heading-3" role="alert">Pick your stat to beat the opponent</d>`;
+};
