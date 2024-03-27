@@ -13,6 +13,7 @@ const GENERATIONLIST = {
 //Scoring Div
 const scoringDiv = document.getElementById("scoringDiv");
 const numberOfCards = document.getElementById("noOfCards");
+const nextCardBtn = document.getElementById("nextCardBtn");
 
 //Player card name/image
 const playerName = document.getElementById("playerName");
@@ -90,7 +91,6 @@ const computerSpattackSelected = document.getElementById("computerSpattackSelect
 const computerSpdefenceSelected = document.getElementById("computerSpdefenceSelected");
 const computerSpeedSelected = document.getElementById("computerSpeedSelected");
 
-
 let playerPokemonArray = [];
 let computerPokemonArray = [];
 
@@ -107,6 +107,7 @@ const startGame = async () => {
 
   //Gets the number of cards player selected to play with
   const numberOfCardsSelected = numberOfCards.value;
+  scoringDiv.innerText = `Cards: You ${numberOfCardsSelected} | ${numberOfCardsSelected} Computer`;
 
   //Get Player array of pokemon
   const playerPokemonIdArray = getPokemomIds(checkedValues, numberOfCardsSelected);
@@ -132,6 +133,7 @@ const startGame = async () => {
 
   // Hide the hero section
   document.querySelector(".hero").style.display = "none";
+  document.getElementById("game").classList.remove("d-none");
 };
 
 const getPokemomIds = (checkedValues, numberOfCardsSelected) => {
@@ -155,6 +157,7 @@ const getPokemon = async (id) => {
       name: data.name.toUpperCase(),
       imageUrl: imageUrl,
       gifUrl: gifUrl,
+      displayInBox: false,
       stats: {
         weight: data.weight,
         height: data.height,
@@ -222,40 +225,51 @@ const updateComputerCard = (pokeData) => {
   computerSpeedProgress.style.width = `${(pokeData.stats.speed / 255) * 100}%`;
 };
 
-const newCard = () => {
-  const removedCard = playerPokemonArray.shift();
-  updatePlayerCard(playerPokemonArray[0]);
-  playerPokemonArray.push(removedCard);
-
-  const removedComputerCard = computerPokemonArray.shift();
-  updateComputerCard(computerPokemonArray[0]);
-  computerPokemonArray.push(removedComputerCard);
-
-  winner = false;
-
-  addGif(winner, removedCard, removedComputerCard);
+const newCard = (winner) => {
+  playerPokemonArray[0].displayInBox = true;
+  computerPokemonArray[0].displayInBox = true;
+  if (winner === "player") {
+    playerPokemonArray.push(playerPokemonArray.shift());
+    const removedCard = computerPokemonArray.shift();
+    playerPokemonArray.push(removedCard);
+  } else if (winner === "computer") {
+    computerPokemonArray.push(computerPokemonArray.shift());
+    const removedCard = playerPokemonArray.shift();
+    computerPokemonArray.push(removedCard);
+  } else {
+    playerPokemonArray.push(playerPokemonArray.shift());
+    computerPokemonArray.push(computerPokemonArray.shift());
+  }
   disableButtons();
 };
 
-const addGif = (winner, removedCard, removedComputerCard) => {
-  const targetGifContainer = winner ? gifPlayerPokemon : gifComputerPokemon;
-
-  targetGifContainer.innerHTML += `
-        <div>
-            <img
-                src="${removedCard.gifUrl}"
-                class="pokemon-sprite mx-auto d-block"
-                alt="Pokemon Sprite"
-            />
-        </div>
-        <div>
-            <img
-                src="${removedComputerCard.gifUrl}"
-                class="pokemon-sprite mx-auto d-block"
-                alt="Pokemon Sprite"
-            />
-        </div>
-    `;
+const updateGif = () => {
+  let tempPlayer = ``;
+  let tempComputer = ``;
+  playerPokemonArray.forEach((pokemon) => {
+    if (pokemon.displayInBox) {
+      tempPlayer += `<div>
+      <img
+          src="${pokemon.gifUrl}"
+          class="pokemon-sprite mx-auto d-block"
+          alt="Pokemon Sprite"
+      />
+  </div>`;
+    }
+  });
+  computerPokemonArray.forEach((pokemon) => {
+    if (pokemon.displayInBox) {
+      tempComputer += `<div>
+      <img
+          src="${pokemon.gifUrl}"
+          class="pokemon-sprite mx-auto d-block"
+          alt="Pokemon Sprite"
+      />
+  </div>`;
+    }
+  });
+  gifPlayerPokemon.innerHTML = tempPlayer;
+  gifComputerPokemon.innerHTML = tempComputer;
 };
 
 const compareStats = (selectedStat) => {
@@ -264,44 +278,81 @@ const compareStats = (selectedStat) => {
 
   if (playerStat > computerStat) {
     console.log("Player wins");
-    highlightWinner("player", selectedStat)
+    highlightWinner("player", selectedStat);
+    newCard("player");
   } else if (playerStat < computerStat) {
     console.log("Computer wins");
-    highlightWinner("computer", selectedStat)
+    highlightWinner("computer", selectedStat);
+    newCard("computer");
   } else {
     console.log("draw");
+    highlightWinner("draw", selectedStat);
+    newCard("draw");
   }
   disableButtons();
+  nextCardBtn.classList.remove("disabled");
 };
 
 const highlightWinner = (winner, selectedStat) => {
-    const playerSelectedId = `${selectedStat}Selected`;
-    const computerSelectedId = `computer${selectedStat.charAt(0).toUpperCase() + selectedStat.slice(1)}Selected`;
+  const playerSelectedId = `${selectedStat}Selected`;
+  const computerSelectedId = `computer${selectedStat.charAt(0).toUpperCase() + selectedStat.slice(1)}Selected`;
 
-    // Set default colors
-    const winColor = "#c8e6c9";
-    const loseColor = "#e6c8c8";
-    const drawColor = "#c0c0c0"; 
+  // Set default colors
+  const winColor = "#c8e6c9";
+  const loseColor = "#e6c8c8";
+  const drawColor = "#c0c0c0";
 
-    // Apply colors based on the winner
-    if (winner === "player") {
-        document.getElementById(playerSelectedId).style.backgroundColor = winColor;
-        document.getElementById(computerSelectedId).style.backgroundColor = loseColor;
-    } else if (winner === "computer") {
-        document.getElementById(playerSelectedId).style.backgroundColor = loseColor;
-        document.getElementById(computerSelectedId).style.backgroundColor = winColor;
-    } else {
-        document.getElementById(playerSelectedId).style.backgroundColor = drawColor;
-        document.getElementById(computerSelectedId).style.backgroundColor = drawColor;
-    }
+  // Apply colors based on the winner
+  if (winner === "player") {
+    document.getElementById(playerSelectedId).style.backgroundColor = winColor;
+    document.getElementById(computerSelectedId).style.backgroundColor = loseColor;
+  } else if (winner === "computer") {
+    document.getElementById(playerSelectedId).style.backgroundColor = loseColor;
+    document.getElementById(computerSelectedId).style.backgroundColor = winColor;
+  } else {
+    document.getElementById(playerSelectedId).style.backgroundColor = drawColor;
+    document.getElementById(computerSelectedId).style.backgroundColor = drawColor;
+  }
 };
 
 heightSelected.addEventListener("click", () => {
   compareStats("height");
 });
+weightSelected.addEventListener("click", () => {
+  compareStats("weight");
+});
 healthSelected.addEventListener("click", () => {
-    compareStats("health");
-  });
+  compareStats("health");
+});
+attackSelected.addEventListener("click", () => {
+  compareStats("attack");
+});
+defenceSelected.addEventListener("click", () => {
+  compareStats("defence");
+});
+spattackSelected.addEventListener("click", () => {
+  compareStats("spattack");
+});
+spdefenceSelected.addEventListener("click", () => {
+  compareStats("spdefence");
+});
+speedSelected.addEventListener("click", () => {
+  compareStats("speed");
+});
+
+const updateScore = () => {
+  scoringDiv.innerText = `Cards: You ${playerPokemonArray.length} | ${computerPokemonArray.length} Computer`;
+};
+
+nextCardBtn.addEventListener("click", () => {
+  updateGif();
+  enableButtons();
+  removeBackground();
+  updatePlayerCard(playerPokemonArray[0]);
+  updateComputerCard(computerPokemonArray[0]);
+  nextCardBtn.classList.add("disabled");
+  updateScore();
+});
 
 const disableButtons = () => {
   heightSelected.classList.add("disabled");
@@ -323,4 +374,23 @@ const enableButtons = () => {
   spattackSelected.classList.remove("disabled");
   spdefenceSelected.classList.remove("disabled");
   speedSelected.classList.remove("disabled");
+};
+
+const removeBackground = () => {
+  heightSelected.style.backgroundColor = null;
+  weightSelected.style.backgroundColor = null;
+  healthSelected.style.backgroundColor = null;
+  attackSelected.style.backgroundColor = null;
+  defenceSelected.style.backgroundColor = null;
+  spattackSelected.style.backgroundColor = null;
+  spdefenceSelected.style.backgroundColor = null;
+  speedSelected.style.backgroundColor = null;
+  computerHeightSelected.style.backgroundColor = null;
+  computerWeightSelected.style.backgroundColor = null;
+  computerHealthSelected.style.backgroundColor = null;
+  computerAttackSelected.style.backgroundColor = null;
+  computerDefenceSelected.style.backgroundColor = null;
+  computerSpattackSelected.style.backgroundColor = null;
+  computerSpdefenceSelected.style.backgroundColor = null;
+  computerSpeedSelected.style.backgroundColor = null;
 };
