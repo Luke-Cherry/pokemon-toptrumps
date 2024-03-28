@@ -16,6 +16,8 @@ const numberOfCards = document.getElementById("noOfCards");
 const nextCardBtn = document.getElementById("nextCardBtn");
 const cardOverlay = document.getElementById("overlay");
 const gameAlert = document.getElementById("gameAlert");
+let computerWinner = false;
+let difficulty = 1;
 
 //Player card name/image
 const playerName = document.getElementById("playerName");
@@ -247,13 +249,16 @@ const newCard = (winner) => {
     playerPokemonArray.push(playerPokemonArray.shift());
     const removedCard = computerPokemonArray.shift();
     playerPokemonArray.push(removedCard);
+    computerWinner = false;
   } else if (winner === "computer") {
     computerPokemonArray.push(computerPokemonArray.shift());
     const removedCard = playerPokemonArray.shift();
     computerPokemonArray.push(removedCard);
+    computerWinner = true;
   } else {
     playerPokemonArray.push(playerPokemonArray.shift());
     computerPokemonArray.push(computerPokemonArray.shift());
+    computerWinner = false;
   }
   disableButtons();
 };
@@ -389,14 +394,37 @@ const updateScore = () => {
 
 nextCardBtn.addEventListener("click", () => {
   updateGif();
-  enableButtons();
+  showCardOverlay();
+  updateScore();
   removeBackground();
   updatePlayerCard(playerPokemonArray[0]);
   updateComputerCard(computerPokemonArray[0]);
   nextCardBtn.classList.add("disabled");
-  updateScore();
-  showCardOverlay();
+
+  if (computerWinner) {
+    computersTurn();
+    return;
+  }
+
+  enableButtons();
 });
+
+const computersTurn = () => {
+  if (difficulty == 1) {
+    const listOfStats = ["height", "weight", "health", "attack", "defence", "spattack", "spdefence", "speed"];
+    const randomStat = listOfStats[Math.floor(Math.random() * listOfStats.length)];
+    gameAlert.innerHTML = `<div class="alert alert-secondary text-center font-weight-bold heading-3 d-flex justify-content-center align-items-center" role="alert">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <span class="ms-2">Opponent is picking their card</span>
+  </div>`;
+
+    setTimeout(() => {
+      compareStats(randomStat);
+    }, 2000);
+  }
+};
 
 const disableButtons = () => {
   heightSelected.classList.add("disabled");
