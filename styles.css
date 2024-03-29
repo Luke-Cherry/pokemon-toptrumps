@@ -38,6 +38,13 @@
   margin: 1px;
 }
 
+.pokemon-endsprite {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+    margin: 2px;
+  }
+
 .pokeImgContainer {
   width: auto;
   height: 10rem;

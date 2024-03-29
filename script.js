@@ -18,6 +18,7 @@ const cardOverlay = document.getElementById("overlay");
 const gameAlert = document.getElementById("gameAlert");
 let computerWinner = false;
 let difficulty = 1;
+const resetGameButton = document.getElementById("resetGame");
 
 //Player card name/image
 const playerName = document.getElementById("playerName");
@@ -311,19 +312,22 @@ const updateGif = () => {
 const compareStats = (selectedStat) => {
   const playerStat = parseInt(playerPokemonArray[0].stats[selectedStat]);
   const computerStat = parseInt(computerPokemonArray[0].stats[selectedStat]);
-  console.log("player-stats:", playerStat);
-  console.log("computer-stats:", computerStat);
 
   if (playerStat > computerStat) {
-    console.log("Player wins");
     highlightWinner("player", selectedStat);
     newCard("player");
+    if (computerPokemonArray.length == 0) {
+      console.log("Player Wins Game");
+      endGame(true);
+    }
   } else if (playerStat < computerStat) {
-    console.log("Computer wins");
     highlightWinner("computer", selectedStat);
     newCard("computer");
+    if (playerPokemonArray.length == 0) {
+      console.log("Computer Wins Game");
+      endGame(false);
+    }
   } else {
-    console.log("draw");
     highlightWinner("draw", selectedStat);
     newCard("draw");
   }
@@ -468,4 +472,44 @@ const removeBackground = () => {
   playerCardBorder.style.outline = null;
   computerCardBorder.style.outline = null;
   gameAlert.innerHTML = `<div class="alert alert-secondary text-center font-weight-bold heading-3" role="alert">Pick your stat to beat the opponent</d>`;
+};
+
+const endGame = (winner) => {
+  //Hide Game
+  document.getElementById("game").classList.add("d-none");
+  //Show endGame element
+  document.getElementById("endGame").classList.remove("d-none");
+  //Change Title based on winner
+  document.getElementById("endGameTitle").innerText = winner ? "Congratulations!" : "You were defeated!";
+  //Change text based on winner
+  document.getElementById("endGameText").innerText = winner
+    ? "You have emerged victorious! Behold the Pokémon you've captured."
+    : "Your opponent has emerged victorious! Behold the Pokémon they've captured";
+  //Populate card at end with the remaining pokemon
+  tempEndPokemonDiv = ``;
+  endArray = winner ? playerPokemonArray : computerPokemonArray;
+  endArray.forEach((pokemon) => {
+    tempEndPokemonDiv += `<div>
+    <img
+        src="${pokemon.gifUrl}"
+        class="pokemon-endsprite mx-auto d-block"
+        alt="Pokemon Sprite"
+    />
+</div>`;
+  });
+  document.getElementById("endGamePokemon").innerHTML = tempEndPokemonDiv;
+  //ResetGame button Logic on continue your journey
+};
+
+resetGameButton.addEventListener("click", () => {
+    resetGame();
+});
+
+
+const resetGame = () => {
+  let playerPokemonArray = [];
+  let computerPokemonArray = [];
+  cardOverlay.style.display = "block";
+  document.getElementById("endGame").classList.add("d-none");
+  document.querySelector(".hero").style.display = "block";
 };
