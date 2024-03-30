@@ -143,7 +143,6 @@ const startGame = async () => {
     })
   );
 
-  console.log(playerPokemonArray);
 
   updatePlayerCard(playerPokemonArray[0]);
   updateComputerCard(computerPokemonArray[0]);
@@ -267,6 +266,7 @@ const newCard = (winner) => {
 const updateGif = () => {
   let tempPlayer = ``;
   let tempComputer = ``;
+
   playerPokemonArray.forEach((pokemon) => {
     if (pokemon.displayInBox) {
       tempPlayer += `<div>
@@ -317,14 +317,12 @@ const compareStats = (selectedStat) => {
     highlightWinner("player", selectedStat);
     newCard("player");
     if (computerPokemonArray.length == 0) {
-      console.log("Player Wins Game");
       endGame(true);
     }
   } else if (playerStat < computerStat) {
     highlightWinner("computer", selectedStat);
     newCard("computer");
     if (playerPokemonArray.length == 0) {
-      console.log("Computer Wins Game");
       endGame(false);
     }
   } else {
@@ -401,9 +399,18 @@ nextCardBtn.addEventListener("click", () => {
   showCardOverlay();
   updateScore();
   removeBackground();
+  nextCardBtn.classList.add("disabled");
+
+  //Checks to see if all computer pokemon is showing and is so shuffles them first
+  const allComputerPokemonShowing = computerPokemonArray.every((pokemon) => pokemon.displayInBox);
+
+  if (allComputerPokemonShowing) {
+    shuffleComputerPokemon();
+    return;
+  }
+
   updatePlayerCard(playerPokemonArray[0]);
   updateComputerCard(computerPokemonArray[0]);
-  nextCardBtn.classList.add("disabled");
 
   if (computerWinner) {
     computersTurn();
@@ -428,6 +435,30 @@ const computersTurn = () => {
       compareStats(randomStat);
     }, 2000);
   }
+};
+
+const shuffleComputerPokemon = () => {
+  gifComputerPokemon.innerHTML = `<div class="text-center font-weight-bold heading-3 d-flex justify-content-center align-items-center py-3 mx-auto" role="alert">
+  <div class="spinner-border text-info me-2" role="status"></div>
+  <span>Shuffling opponents' Pokémon</span>
+</div>`;
+  computerPokemonArray.sort((a, b) => 0.5 - Math.random());
+
+  computerPokemonArray.forEach((pokemon) => {
+    pokemon.displayInBox = false;
+  });
+
+  setTimeout(() => {
+    updateGif();
+    updatePlayerCard(playerPokemonArray[0]);
+    updateComputerCard(computerPokemonArray[0]);
+    if (computerWinner) {
+      computersTurn();
+      return;
+    }
+  
+    enableButtons();
+  }, 2000);
 };
 
 const disableButtons = () => {
@@ -502,13 +533,12 @@ const endGame = (winner) => {
 };
 
 resetGameButton.addEventListener("click", () => {
-    resetGame();
+  resetGame();
 });
 
-
 const resetGame = () => {
-  let playerPokemonArray = [];
-  let computerPokemonArray = [];
+  playerPokemonArray = [];
+  computerPokemonArray = [];
   cardOverlay.style.display = "block";
   document.getElementById("endGame").classList.add("d-none");
   document.querySelector(".hero").style.display = "block";
